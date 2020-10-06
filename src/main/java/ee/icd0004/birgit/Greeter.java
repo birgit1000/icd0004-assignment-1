@@ -18,17 +18,25 @@ public class Greeter {
         sb.append("Hello, ");
         int lastNameIndex = names.length - 1;
 
-        for(int i = 0; i < names.length; i++){
-            if(i != lastNameIndex) {
-                sb.append(names[i]);
-                sb.append(" and ");
-            }
-            else {
-                sb.append(names[i]);
-                sb.append(".");
-            }
-        }
+        appendNamesToGreeting(names, sb, lastNameIndex);
+        
         return sb.toString();
+    }
+
+    private void appendNamesToGreeting(String[] names, StringBuilder sb, int lastNameIndex) {
+        for(int i = 0; i < names.length; i++){
+            sb.append(names[i]);
+            appendEnding(sb, lastNameIndex, i);
+        }
+    }
+
+    private void appendEnding(StringBuilder sb, int lastNameIndex, int i) {
+        if(i != lastNameIndex) {
+            sb.append(" and ");
+        }
+        else {
+            sb.append(".");
+        }
     }
 
     private String getGreeting(String name) {
