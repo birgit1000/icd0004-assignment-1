@@ -80,4 +80,13 @@ public class GreeterTest
         String actualGreetingMessage = greeter.greet(names);
         assertEquals(expectedGreetingMessage, actualGreetingMessage); 
     }
+
+    @Test
+    public void shouldReturnGreetingAndDivideNamesWhenManyInString(){
+        String[] names = {"Bob", "Charlie, Dianne"};
+        String expectedGreetingMessage = "Hello, Bob, Charlie, and Dianne.";
+
+        String actualGreetingMessage = greeter.greet(names);
+        assertEquals(expectedGreetingMessage, actualGreetingMessage); 
+    }
 }
