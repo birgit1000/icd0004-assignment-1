@@ -7,10 +7,14 @@ public class Greeter {
         if (isEmpty(name)) {
             return String.format("Hello, %s.", defaultName);
         }
-        else if(name.toUpperCase().equals(name)){
+        else if(isUpperCase(name)){
             return String.format("Hello, %s.", name).toUpperCase();
         }
         return String.format("Hello, %s.", name);
+    }
+
+    private boolean isUpperCase(String name) {
+        return name.toUpperCase().equals(name);
     }
 
     public boolean isEmpty(String name){
