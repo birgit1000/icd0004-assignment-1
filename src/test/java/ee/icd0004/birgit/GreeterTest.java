@@ -11,15 +11,22 @@ public class GreeterTest
 {
     @Test
     public void shouldReturnGreetingWithGivenName(){
-        //arrange
         Greeter greeter = new Greeter();
         String name = "Bob";
         String expectedGreetingMessage = "Hello, Bob.";
 
-        //act
         String actualGreetingMessage = greeter.greet(name);
 
-        //assert
+        assertEquals(expectedGreetingMessage, actualGreetingMessage);
+    }
+
+    @Test
+    public void shouldReturDefaultNameWhenGivenNull(){
+        Greeter greeter = new Greeter();
+        String name = null;
+        String expectedGreetingMessage = "Hello, my friend.";
+
+        String actualGreetingMessage = greeter.greet(name);
         assertEquals(expectedGreetingMessage, actualGreetingMessage);
     }
 }
