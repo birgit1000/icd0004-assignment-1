@@ -39,4 +39,14 @@ public class GreeterTest
         String actualGreetingMessage = greeter.greet(name);
         assertEquals(expectedGreetingMessage, actualGreetingMessage);
     }
+
+    @Test
+    public void shouldGreetUppercaseIfNameIsUppercase(){
+        Greeter greeter = new Greeter();
+        String name = "JERRY";
+        String expectedGreetingMessage = "HELLO, JERRY.";
+
+        String actualGreetingMessage = greeter.greet(name);
+        assertEquals(expectedGreetingMessage, actualGreetingMessage); 
+    }
 }
