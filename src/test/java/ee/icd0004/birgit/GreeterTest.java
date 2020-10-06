@@ -1,7 +1,6 @@
 package ee.icd0004.birgit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -10,21 +9,12 @@ import org.junit.Test;
  */
 public class GreeterTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( false );
-    }
-
     @Test
     public void shouldReturnGreetingWithGivenName(){
         //arrange
         Greeter greeter = new Greeter();
         String name = "Bob";
-        String expectedGreetingMessage = "Hello, Bob";
+        String expectedGreetingMessage = "Hello, Bob.";
 
         //act
         String actualGreetingMessage = greeter.greet(name);
