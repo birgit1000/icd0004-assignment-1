@@ -2,6 +2,7 @@ package ee.icd0004.birgit;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -9,9 +10,15 @@ import org.junit.Test;
  */
 public class GreeterTest 
 {
+    private Greeter greeter;
+
+    @Before
+    public void init(){
+        greeter = new Greeter();
+    }
+
     @Test
     public void shouldReturnGreetingWithGivenName(){
-        Greeter greeter = new Greeter();
         String name = "Bob";
         String expectedGreetingMessage = "Hello, Bob.";
 
@@ -22,7 +29,6 @@ public class GreeterTest
 
     @Test
     public void shouldReturnDefaultNameWhenGivenNull(){
-        Greeter greeter = new Greeter();
         String name = null;
         String expectedGreetingMessage = "Hello, my friend.";
 
@@ -32,7 +38,6 @@ public class GreeterTest
 
     @Test
     public void shouldReturnDefaultNameWhenGivenEmptyString(){
-        Greeter greeter = new Greeter();
         String name = "";
         String expectedGreetingMessage = "Hello, my friend.";
 
@@ -42,7 +47,6 @@ public class GreeterTest
 
     @Test
     public void shouldGreetUppercaseIfNameIsUppercase(){
-        Greeter greeter = new Greeter();
         String name = "JERRY";
         String expectedGreetingMessage = "HELLO, JERRY.";
 
