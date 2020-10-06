@@ -57,8 +57,8 @@ public class Greeter {
         return upperCaseGreeting;
     }
 
-    private boolean checkIfOxfordCommaIsNeeded(Queue<String> upperCaseNames) {
-        return upperCaseNames.size() > 2;
+    private boolean checkIfOxfordCommaIsNeeded(Queue<String> names) {
+        return names.size() > 2;
     }
 
     private void divideUpperAndLowerCaseNames(Queue<String> upperCaseNames, Queue<String> lowerCaseNames,String[] names) {
@@ -73,13 +73,15 @@ public class Greeter {
     }
 
     private void addNameToQueue(Queue<String> lowerCaseNames, String name) {
-        if(name.contains(",")) {
+        if(name.contains(",") && !name.contains("\"")) {
             String[] commaArray = name.split(", ");
             for(String commaName : commaArray){
                 lowerCaseNames.add(commaName);
+                return;
             }
         }
-        else lowerCaseNames.add(name);
+        else if(name.contains("\"")) name = name.substring(1, name.length()-1);
+        lowerCaseNames.add(name);
     }
 
     private void appendLowerCaseNamesToGreeting(Queue<String> lowerCaseNames, StringBuilder sb) {
