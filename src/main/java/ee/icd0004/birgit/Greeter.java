@@ -24,10 +24,14 @@ public class Greeter {
 
         divideUpperAndLowerCaseNames(upperCaseNames, lowerCaseNames, names);
 
-        appendLowerCaseNamesToGreeting(lowerCaseNames, sb);
-        if(hasUpperCaseNames()) appendUpperCaseNamesToGreeting(upperCaseNames, sb);
+        appendNamesToGreeting(sb);
         
         return sb.toString();
+    }
+
+    private void appendNamesToGreeting(StringBuilder sb) {
+        appendLowerCaseNamesToGreeting(lowerCaseNames, sb);
+        if(hasUpperCaseNames()) appendUpperCaseNamesToGreeting(upperCaseNames, sb);
     }
 
     private boolean hasUpperCaseNames() {
@@ -40,16 +44,18 @@ public class Greeter {
         boolean isOxfordCommaNeeded = checkIfOxfordCommaIsNeeded(upperCaseNames);
 
         sb.append(" AND HELLO,");
+        addUpperCaseNames(upperCaseNames, upperCaseSb, lastNameIndex, isOxfordCommaNeeded);
+        upperCaseSb.append("!");
 
+        sb.append(toUpperCase(upperCaseSb));
+    }
+
+    private void addUpperCaseNames(Queue<String> upperCaseNames, StringBuilder upperCaseSb, int lastNameIndex,
+            boolean isOxfordCommaNeeded) {
         while(!upperCaseNames.isEmpty()){
             appendEnding(upperCaseNames.peek() , upperCaseSb, lastNameIndex, isOxfordCommaNeeded);
             upperCaseNames.remove();
         }
-        
-        upperCaseSb.append("!");
-
-        String upperCaseGreeting = toUpperCase(upperCaseSb);
-        sb.append(upperCaseGreeting);
     }
 
     private String toUpperCase(StringBuilder upperCaseSb) {
@@ -73,15 +79,25 @@ public class Greeter {
     }
 
     private void addNameToQueue(Queue<String> lowerCaseNames, String name) {
-        if(name.contains(",") && !name.contains("\"")) {
+        if(hasNotIntentionalComma(name)) {
             String[] commaArray = name.split(", ");
             for(String commaName : commaArray){
                 lowerCaseNames.add(commaName);
-                return;
             }
+            return;
         }
-        else if(name.contains("\"")) name = name.substring(1, name.length()-1);
+        else if(name.contains("\""))
+            name = removeFirstAndLastQuote(name);
         lowerCaseNames.add(name);
+    }
+
+    private boolean hasNotIntentionalComma(String name) {
+        return name.contains(",") && !name.contains("\"");
+    }
+
+    private String removeFirstAndLastQuote(String name) {
+        name = name.substring(1, name.length()-1);
+        return name;
     }
 
     private void appendLowerCaseNamesToGreeting(Queue<String> lowerCaseNames, StringBuilder sb) {
