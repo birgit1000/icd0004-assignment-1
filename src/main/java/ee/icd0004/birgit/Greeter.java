@@ -63,8 +63,24 @@ public class Greeter {
 
     private void divideUpperAndLowerCaseNames(Queue<String> upperCaseNames, Queue<String> lowerCaseNames,String[] names) {
          for(String name : names){
-            if(isUpperCase(name)) upperCaseNames.add(name);
-            else lowerCaseNames.add(name);
+            if(isUpperCase(name)) {
+                if(name.contains(",")) {
+                    String[] commaArray = name.split(",");
+                    for(String commaName : commaArray){
+                        upperCaseNames.add(commaName);
+                    }
+                }
+                else upperCaseNames.add(name);
+            }
+            else {
+                if(name.contains(",")) {
+                    String[] commaArray = name.split(", ");
+                    for(String commaName : commaArray){
+                        lowerCaseNames.add(commaName);
+                    }
+                }
+                else lowerCaseNames.add(name);
+            }
         }
     }
 
