@@ -56,8 +56,8 @@ public class GreeterTest
 
     @Test 
     public void shouldReturnGreetingWithManyNameWhenGivenArrary(){
-        String[] names = {"Jill", "Mary"};
-        String expectedGreetingMessage = "Hello, Jill and Jane";
+        String[] names = {"Jill", "Jane"};
+        String expectedGreetingMessage = "Hello, Jill and Jane.";
 
         String actualGreetingMessage = greeter.greet(names);
         assertEquals(expectedGreetingMessage, actualGreetingMessage); 

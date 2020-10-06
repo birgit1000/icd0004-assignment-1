@@ -13,8 +13,22 @@ public class Greeter {
         return getGreeting(name);
     }
 
-    public String greet(String[] name){
-        return null;
+    public String greet(String[] names){
+        StringBuilder sb = new StringBuilder();
+        sb.append("Hello, ");
+        int lastNameIndex = names.length - 1;
+
+        for(int i = 0; i < names.length; i++){
+            if(i != lastNameIndex) {
+                sb.append(names[i]);
+                sb.append(" and ");
+            }
+            else {
+                sb.append(names[i]);
+                sb.append(".");
+            }
+        }
+        return sb.toString();
     }
 
     private String getGreeting(String name) {
