@@ -89,4 +89,13 @@ public class GreeterTest
         String actualGreetingMessage = greeter.greet(names);
         assertEquals(expectedGreetingMessage, actualGreetingMessage); 
     }
+
+    @Test
+    public void shouldReturnGreetingAndKeepIntentionalCommas(){
+        String[] names = {"Bob", "\"Charlie, Dianne\""};
+        String expectedGreetingMessage = "Hello, Bob and Charlie, Dianne.";
+
+        String actualGreetingMessage = greeter.greet(names);
+        assertEquals(expectedGreetingMessage, actualGreetingMessage); 
+    }
 }
