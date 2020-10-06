@@ -13,6 +13,10 @@ public class Greeter {
         return getGreeting(name);
     }
 
+    public String greet(String[] name){
+        return null;
+    }
+
     private String getGreeting(String name) {
         return String.format("Hello, %s.", name);
     }
