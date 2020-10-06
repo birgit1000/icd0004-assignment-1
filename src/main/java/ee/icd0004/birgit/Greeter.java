@@ -5,11 +5,15 @@ public class Greeter {
     public String greet(String name){
         String defaultName = "my friend";
         if (isEmpty(name)) {
-            return String.format("Hello, %s.", defaultName);
+            return getGreeting(defaultName);
         }
         else if(isUpperCase(name)){
-            return String.format("Hello, %s.", name).toUpperCase();
+            return getGreeting(name).toUpperCase();
         }
+        return getGreeting(name);
+    }
+
+    private String getGreeting(String name) {
         return String.format("Hello, %s.", name);
     }
 
