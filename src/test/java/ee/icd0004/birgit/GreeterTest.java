@@ -21,9 +21,19 @@ public class GreeterTest
     }
 
     @Test
-    public void shouldReturDefaultNameWhenGivenNull(){
+    public void shouldReturnDefaultNameWhenGivenNull(){
         Greeter greeter = new Greeter();
         String name = null;
+        String expectedGreetingMessage = "Hello, my friend.";
+
+        String actualGreetingMessage = greeter.greet(name);
+        assertEquals(expectedGreetingMessage, actualGreetingMessage);
+    }
+
+    @Test
+    public void shouldReturnDefaultNameWhenGivenEmptyString(){
+        Greeter greeter = new Greeter();
+        String name = "";
         String expectedGreetingMessage = "Hello, my friend.";
 
         String actualGreetingMessage = greeter.greet(name);

@@ -11,6 +11,6 @@ public class Greeter {
     }
 
     public boolean isEmpty(String name){
-        return name == null;
+        return name == null || name.isEmpty();
     }
 }
