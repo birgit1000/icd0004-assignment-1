@@ -31,15 +31,16 @@ public class Greeter {
 
     private void appendEnding(String name, StringBuilder sb, int lastNameIndex, int i) {
         if(i != lastNameIndex) {
-            sb.append(" ");
-            sb.append(name);
-            if(lastNameIndex != 1) sb.append(",");
+            sb.append(" ").append(name);
+            if(isMoreThan2Names(lastNameIndex)) sb.append(",");
         }
         else {
-            sb.append(" and ");
-            sb.append(name);
-            sb.append(".");
+            sb.append(" and ").append(name).append(".");;
         }
+    }
+
+    private boolean isMoreThan2Names(int lastNameIndex) {
+        return lastNameIndex != 1;
     }
 
     private String getGreeting(String name) {
