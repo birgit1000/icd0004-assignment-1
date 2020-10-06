@@ -15,7 +15,7 @@ public class Greeter {
 
     public String greet(String[] names){
         StringBuilder sb = new StringBuilder();
-        sb.append("Hello, ");
+        sb.append("Hello,");
         int lastNameIndex = names.length - 1;
 
         appendNamesToGreeting(names, sb, lastNameIndex);
@@ -25,16 +25,19 @@ public class Greeter {
 
     private void appendNamesToGreeting(String[] names, StringBuilder sb, int lastNameIndex) {
         for(int i = 0; i < names.length; i++){
-            sb.append(names[i]);
-            appendEnding(sb, lastNameIndex, i);
+            appendEnding(names[i], sb, lastNameIndex, i);
         }
     }
 
-    private void appendEnding(StringBuilder sb, int lastNameIndex, int i) {
+    private void appendEnding(String name, StringBuilder sb, int lastNameIndex, int i) {
         if(i != lastNameIndex) {
-            sb.append(" and ");
+            sb.append(" ");
+            sb.append(name);
+            if(lastNameIndex != 1) sb.append(",");
         }
         else {
+            sb.append(" and ");
+            sb.append(name);
             sb.append(".");
         }
     }
