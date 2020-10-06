@@ -71,4 +71,13 @@ public class GreeterTest
         String actualGreetingMessage = greeter.greet(names);
         assertEquals(expectedGreetingMessage, actualGreetingMessage); 
     }
+
+    @Test
+    public void shouldReturnSeparateGreetingForUppercaseName(){
+        String[] names = {"Amy", "BRIAN", "Charlotte"};
+        String expectedGreetingMessage = "Hello, Amy and Charlotte. AND HELLO, BRIAN!";
+
+        String actualGreetingMessage = greeter.greet(names);
+        assertEquals(expectedGreetingMessage, actualGreetingMessage); 
+    }
 }
